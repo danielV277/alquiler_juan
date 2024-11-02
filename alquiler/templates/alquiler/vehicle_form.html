@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="card p-5 w-50 shadow-lg rounded-3">
+            <h2 class="text-center mb-4">Register Vehicle</h2>
+            <form method="post" enctype="multipart/form-data">{% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary w-100 rounded-3 mt-3">Save Vehicle</button>
+                <a href="{% url 'vehicle_list' %}">Cancel</a>
+            </form>
+        </div>
+    </div>
+{% endblock content %}

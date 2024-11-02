@@ -16,7 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from alquiler import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('vehicle/add',views.VehicleAdd.as_view(),name='vehicle_form'),
+    path('vehicle/list',views.VehicleList.as_view(),name='vehicle_list'),
 ]
