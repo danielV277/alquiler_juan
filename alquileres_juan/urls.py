@@ -20,6 +20,14 @@ from alquiler import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('vehicle/<int:pk>/detail',views.VehicleDetail.as_view(),name='vehicle_detail'),
     path('vehicle/add',views.VehicleAdd.as_view(),name='vehicle_form'),
     path('vehicle/list',views.VehicleList.as_view(),name='vehicle_list'),
+    path('vehicle/<int:pk>/update',views.VehicleUpdate.as_view(),name='vehicle_update'),
+    path('vehicle/<int:pk>/delete',views.VehicleDelete.as_view(),name='vehicle_delete'),
+    path('user/add',views.UserAdd.as_view(),name='user_form'),
+    path('user/list',views.UserList.as_view(),name='user_list'),
+    path('user/<int:pk>/delete',views.UserDelete.as_view(),name='user_delete'),
+    path('user/<int:pk>/update',views.UserUpdate.as_view(),name='user_update'),
+
 ]

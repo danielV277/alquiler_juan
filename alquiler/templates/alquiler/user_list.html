@@ -5,22 +5,23 @@
         {% for c in object_list.all %}
             <div class="col-md-3 mx-2">
                 <div class="card" style="width: 18rem;">
-                    <img src="{% static c.photo.url %}" style="max-height:300px" class="card-img-top" alt="vehicle image">
+                    <img src="{% static c.photo.url %}" class="card-img-top" alt="User image">
                     <div class="card-body">
-                      <h5 class="card-title">Vehicle {{ c.full_name }}</h5>
+                      <h5 class="card-title">User {{ c.full_name }}</h5>
                       {% comment %} <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> {% endcomment %}
                     </div>
                     <ul class="list-group list-group-flush">
-                      <li class="list-group-item bg-primary-subtle">States {{c.state}}</li>
+                      <li class="list-group-item">Numero ID {{ c.numId}}</li>
+                      <li class="list-group-item">birthdate {{ c.birth_date}}</li>
+                      <li class="list-group-item">email {{ c.email }}</li>
+                      <li class="list-group-item">phone number {{ c.phone_number }}</li>
                     </ul>
                     <div class="card-body">
-                        <a href="{% url 'vehicle_detail' c.pk %}" class="btn btn-info">More</a>
-                        <a href="{% url 'vehicle_update' c.pk %}" class="btn btn-primary">Update</a>
-                        <a href="{% url 'vehicle_delete' c.pk %}" class="btn btn-danger">Delete</a>
+                        <a href="{% url 'user_update' c.pk %}" class="btn btn-primary">Update</a>
+                        <a href="{% url 'user_delete' c.pk %}" class="btn btn-primary">Deleted</a>
                     </div>
                 </div>  
             </div>
-        
         {% endfor%}
     </div>
 {%endblock content%}

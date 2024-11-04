@@ -3,41 +3,38 @@
 
     <div class="container d-flex justify-content-center align-items-center min-vh-100 my-2">
         <div class="card p-5 w-50 shadow-lg rounded-3">
-            <h2 class="text-center mb-4">Register Vehicle</h2>
+            <h2 class="text-center mb-4">Register User</h2>
             <form method="post" enctype="multipart/form-data">{% csrf_token %}
                 <div class="row">
                     <div class="col-md-6">
                         <!-- Coloca aquí la primera mitad de los campos -->
                         <div class="mb-3">
-                            {{ form.brand.label_tag }}
-                            {{ form.brand }}
+                            {{ form.numId.label_tag }}
+                            {{ form.numId }}
                         </div>
                         <div class="mb-3">
-                            {{ form.model.label_tag }}
-                            {{ form.model }}
+                            {{ form.first_name.label_tag }}
+                            {{ form.first_name }}
                         </div>
                         <div class="mb-3">
-                            {{ form.type.label_tag }}
-                            {{ form.type }}
+                            {{ form.last_name.label_tag }}
+                            {{ form.last_name }}
                         </div>
-                        <div class="mb-3">
-                            {{ form.year.label_tag }}
-                            {{ form.year }}
-                        </div>
+                        
                     </div>
                     <div class="col-md-6">
                         <!-- Coloca aquí la segunda mitad de los campos -->
                         <div class="mb-3">
-                            {{ form.plates.label_tag }}
-                            {{ form.plates }}
+                            {{ form.birth_date.label_tag }}
+                            {{ form.birth_date }}
                         </div>
                         <div class="mb-3">
-                            {{ form.state.label_tag }}
-                            {{ form.state }}
+                            {{ form.email.label_tag }}
+                            {{ form.email }}
                         </div>
                         <div class="mb-3">
-                            {{ form.cost_per_day.label_tag }}
-                            {{ form.cost_per_day }}
+                            {{ form.phone_number.label_tag }}
+                            {{ form.phone_number }}
                         </div>
                         <div class="mb-3">
                             {{ form.photo.label_tag }}
@@ -47,8 +44,8 @@
                 </div>
                    
                 
-                <button type="submit" class="btn btn-primary w-100 rounded-3 mt-3">Save Vehicle</button>
-                <a class="btn btn-warning w-100 rounded-3 mt-3" href="{% url 'vehicle_list' %}">Cancel</a>
+                <button type="submit" class="btn btn-primary w-100 rounded-3 mt-3">Save User</button>
+                <a class="btn btn-warning w-100 rounded-3 mt-3" href="{% url 'user_list' %}">Cancel</a>
             </form>
         </div>
     </div>
