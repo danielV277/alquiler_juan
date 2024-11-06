@@ -1,5 +1,6 @@
 from django import forms
-from .models import Vehicle,User
+
+from .models import Request, Vehicle,User
 
 class VehicleForm(forms.ModelForm):
     class Meta:
@@ -31,4 +32,14 @@ class UserForm(forms.ModelForm):
             
         }
         
-    
+from django import forms
+from .models import Request
+
+class VehicleRequestForm(forms.ModelForm):
+    class Meta:
+        model = Request
+        fields = ['request_date', 'request_days', 'expected_return_date', 'departure_date', 'entry_date', 'request_status', 'total_cost', 'payment_status']
+
+    # Opcional: Si 'request_status' y 'payment_status' son campos con opciones fijas (por ejemplo, "Pending", "Approved", etc.)
+    request_status = forms.ChoiceField(choices=[('pending', 'Pending'), ('approved', 'Approved')], initial='pending')
+    payment_status = forms.ChoiceField(choices=[('unpaid', 'Unpaid'), ('paid', 'Paid')], initial='unpaid')

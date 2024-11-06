@@ -1,55 +1,56 @@
 {% extends "base.html" %}
-{% block content %}
 
-    <div class="container d-flex justify-content-center align-items-center min-vh-100 my-2">
-        <div class="card p-5 w-50 shadow-lg rounded-3">
-            <h2 class="text-center mb-4">Register Vehicle</h2>
-            <form method="post" enctype="multipart/form-data">{% csrf_token %}
-                <div class="row">
-                    <div class="col-md-6">
-                        <!-- Coloca aquí la primera mitad de los campos -->
-                        <div class="mb-3">
-                            {{ form.brand.label_tag }}
-                            {{ form.brand }}
-                        </div>
-                        <div class="mb-3">
-                            {{ form.model.label_tag }}
-                            {{ form.model }}
-                        </div>
-                        <div class="mb-3">
-                            {{ form.type.label_tag }}
-                            {{ form.type }}
-                        </div>
-                        <div class="mb-3">
-                            {{ form.year.label_tag }}
-                            {{ form.year }}
-                        </div>
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center min-vh-100 my-2">
+    <div class="card p-5 w-50 shadow-lg rounded-3">
+        <h2 class="text-center mb-4">Register Vehicle</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <div class="row">
+                <!-- Primera columna de campos -->
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        {{ form.brand.label_tag }}
+                        {{ form.brand }}
                     </div>
-                    <div class="col-md-6">
-                        <!-- Coloca aquí la segunda mitad de los campos -->
-                        <div class="mb-3">
-                            {{ form.plates.label_tag }}
-                            {{ form.plates }}
-                        </div>
-                        <div class="mb-3">
-                            {{ form.state.label_tag }}
-                            {{ form.state }}
-                        </div>
-                        <div class="mb-3">
-                            {{ form.cost_per_day.label_tag }}
-                            {{ form.cost_per_day }}
-                        </div>
-                        <div class="mb-3">
-                            {{ form.photo.label_tag }}
-                            {{ form.photo }}
-                        </div>
+                    <div class="mb-3">
+                        {{ form.model.label_tag }}
+                        {{ form.model }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.type.label_tag }}
+                        {{ form.type }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.year.label_tag }}
+                        {{ form.year }}
                     </div>
                 </div>
-                   
-                
-                <button type="submit" class="btn btn-primary w-100 rounded-3 mt-3">Save Vehicle</button>
-                <a class="btn btn-warning w-100 rounded-3 mt-3" href="{% url 'vehicle_list' %}">Cancel</a>
-            </form>
-        </div>
+                <!-- Segunda columna de campos -->
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        {{ form.plates.label_tag }}
+                        {{ form.plates }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.state.label_tag }}
+                        {{ form.state }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.cost_per_day.label_tag }}
+                        {{ form.cost_per_day }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.photo.label_tag }}
+                        {{ form.photo }}
+                    </div>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn btn-primary w-100 rounded-3 mt-3">Save Vehicle</button>
+            <a class="btn btn-warning w-100 rounded-3 mt-3" href="{% url 'vehicle_list' %}">Cancel</a>
+        </form>
     </div>
+</div>
 {% endblock content %}

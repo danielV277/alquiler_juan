@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from alquiler import views
+from alquileres_juan import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,9 +26,16 @@ urlpatterns = [
     path('vehicle/list',views.VehicleList.as_view(),name='vehicle_list'),
     path('vehicle/<int:pk>/update',views.VehicleUpdate.as_view(),name='vehicle_update'),
     path('vehicle/<int:pk>/delete',views.VehicleDelete.as_view(),name='vehicle_delete'),
+    path('vehicle/request/', views.VehicleRequestList.as_view(), name='vehicle_request_list'),
+    path('vehicle/request/<int:vehicle_id>/', views.VehicleRequestCreate.as_view(), name='vehicle_request_create'),
     path('user/add',views.UserAdd.as_view(),name='user_form'),
     path('user/list',views.UserList.as_view(),name='user_list'),
     path('user/<int:pk>/delete',views.UserDelete.as_view(),name='user_delete'),
     path('user/<int:pk>/update',views.UserUpdate.as_view(),name='user_update'),
 
 ]
+
+
+from django.conf.urls.static import static
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -56,16 +56,19 @@ class Vehicle(models.Model):
 
 
 class Request(models.Model):
-    user_id =  models.ForeignKey('User', on_delete=models.PROTECT, related_name='get_requests')
-    vehicle_id = models.ForeignKey('Vehicle', on_delete=models.PROTECT, related_name= 'get_requests')
+    user = models.ForeignKey('User', on_delete=models.PROTECT, related_name='get_requests')
+    vehicle = models.ForeignKey('Vehicle', on_delete=models.PROTECT, related_name='get_requests')
     request_date = models.DateField()
     request_days = models.IntegerField()
     expected_return_date = models.DateField()
     departure_date = models.DateField()
     entry_date = models.DateField()
     request_status = models.CharField(max_length=80)
-    total_cost = models.DecimalField(max_digits=10,decimal_places=2)
+    total_cost = models.DecimalField(max_digits=10, decimal_places=2)
     payment_status = models.CharField(max_length=80)
+
+    def __str__(self):
+        return f"{self.user} - {self.vehicle} - {self.request_status}"
     
 
     

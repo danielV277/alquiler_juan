@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Request: {{ vehicle.name }}</h1>
+  {% if vehicle and vehicle.id %}
+<form method="POST" action="{% url 'vehicle_request_create' vehicle.id %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Submit Request</button>
+  </form>
+  {% else %}
+    <p>Error: No se puede cargar el formulario porque falta el ID del vehículo.</p>
+{% endif %}
+
+{% endblock %}
