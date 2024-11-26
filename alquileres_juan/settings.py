@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-)x%w1@16d2j9an^h-#++p$wpj5^qe4=hmh!t9ho^^&di3r9!w#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0']
 
 
 # Application definition
@@ -78,11 +78,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'alquiler',
-        'USER': 'user_alquiler',
-        'PASSWORD': 'alquier1234',
+        'USER': 'admin',
+        'PASSWORD': 'admin',
         'HOST': 'db',
         'PORT': '5432',
-
     }
 }
 
@@ -109,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-ar'
 
 TIME_ZONE = 'UTC'
 
