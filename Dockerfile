@@ -1,11 +1,13 @@
 # Usamos una imagen base de Python
 FROM python:3.12-slim
+ENV PYTHONUNBUFFER=1
 
 # Seteamos el directorio de trabajo dentro del contenedor
 WORKDIR /code
 
 # Copiamos los requisitos del proyecto y los instalamos
 COPY requirements.txt /code/
+RUN python -m pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copiamos el código del proyecto
