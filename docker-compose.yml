@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:16.6
+    restart: always
+    container_name: postgres_db
+    environment:
+      - DATABASE_HOST=127.0.0.1
+      - POSTGRES_DB=alquiler
+      - POSTGRES_USER=user_alquier
+      - POSTGRES_PASSWORD= alquiler1234
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=admin
+    ports:
+      - "80:80"
+    depends_on:
+      - db
+
+  web:
+    build: .
+    container_name: django_web
+    command: python3 manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - POSTGRES_NAME=alquiler
+      - POSTGRES_USER=user_alquier
+      - POSTGRES_PASSWORD= alquiler1234
+
+volumes:
+  postgres_data:
