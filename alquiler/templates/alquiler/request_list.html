@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static%}
+{%block content%}
+    <div class="row justify-content-start">
+        
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Vehicle</th>
+                <th scope="col">Person</th>
+                <th scope="col">Number day</th>
+                <th scope="col">Costo</th>
+                <th scope='col'>Payment</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for c in object_list.all %}
+                    <tr>
+                        <th scope="row">{{ c.pk }}</th>
+                        <td>{{ c.vehicle_id }}</td>
+                        <td>{{ c.user_id }}</td>
+                        <td>{{ c.request_days }}</td>
+                        <td>{{ c.total_cost}}</td>
+                        <td> 
+                            <a href="{% url 'request_update_paid' c.pk %}" 
+                                class="btn {% if c.payment_status == 'noPaid' %}btn-danger{% else %}btn-primary{% endif %}">
+                                {% if c.payment_status == 'noPaid' %}Mark as Paid{% else %}Paid{% endif %}
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor%}  
+            </tbody>
+          </table>
+        
+    </div>
+{%endblock content%}

@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% load static%}
 {%block content%}
-    <div class="row">
+    <div class="row justify-content-start">
         {% for c in object_list.all %}
-            <div class="col-md-3 mx-2">
-                <div class="card" style="width: 18rem;">
-                    <img src="{% static c.photo.url %}" class="card-img-top" alt="User image">
+            <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch">
+                <div class="card mb-4" style="width: 100%; max-width: 350px;">
+                    <img src="{% static c.photo.url %}" style="height: 200px; object-fit: cover;" class="card-img-top" alt="User image">
                     <div class="card-body">
                       <h5 class="card-title">User {{ c.full_name }}</h5>
                       {% comment %} <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> {% endcomment %}

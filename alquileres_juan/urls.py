@@ -21,6 +21,7 @@ from alquiler import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('vehicle/<int:pk>/detail',views.VehicleDetail.as_view(),name='vehicle_detail'),
+    path('vehicle/<int:pk>/updateState',views.VehicleUpdateState.as_view(),name='vehicle_update_state'),
     path('vehicle/add',views.VehicleAdd.as_view(),name='vehicle_form'),
     path('vehicle/list',views.VehicleList.as_view(),name='vehicle_list'),
     path('vehicle/<int:pk>/update',views.VehicleUpdate.as_view(),name='vehicle_update'),
@@ -29,5 +30,9 @@ urlpatterns = [
     path('user/list',views.UserList.as_view(),name='user_list'),
     path('user/<int:pk>/delete',views.UserDelete.as_view(),name='user_delete'),
     path('user/<int:pk>/update',views.UserUpdate.as_view(),name='user_update'),
+    path('request/add',views.RequestAdd.as_view(),name='request_form'),
+    path('request/add/<int:pk>',views.RequestAdd.as_view(),name='request_form_pk'),
+    path('requests/list',views.RequestList.as_view(),name='request_list'),
+    path('requests/<int:pk>/updatePaid',views.RequestUpdatePaid.as_view(),name='request_update_paid'),
 
 ]

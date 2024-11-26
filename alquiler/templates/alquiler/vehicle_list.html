@@ -1,26 +1,96 @@
 {% extends 'base.html' %}
 {% load static%}
 {%block content%}
-    <div class="row">
+    {% comment %} para cars {% endcomment %}
+    <div class="row justify-content-start">
+        <h3>CARS</h3>
+        <hr/>
         {% for c in object_list.all %}
-            <div class="col-md-3 mx-2">
-                <div class="card" style="width: 18rem;">
-                    <img src="{% static c.photo.url %}" style="max-height:300px" class="card-img-top" alt="vehicle image">
-                    <div class="card-body">
-                      <h5 class="card-title">Vehicle {{ c.full_name }}</h5>
-                      {% comment %} <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> {% endcomment %}
-                    </div>
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item bg-primary-subtle">States {{c.state}}</li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="{% url 'vehicle_detail' c.pk %}" class="btn btn-info">More</a>
-                        <a href="{% url 'vehicle_update' c.pk %}" class="btn btn-primary">Update</a>
-                        <a href="{% url 'vehicle_delete' c.pk %}" class="btn btn-danger">Delete</a>
-                    </div>
-                </div>  
-            </div>
-        
+            {% if c.type == 'car' %}
+                <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch">
+                    <div class="card mb-4" style="width: 100%; max-width: 350px;">
+                        <img src="{% static c.photo.url %}" style="height: 200px; object-fit: cover;" class="card-img-top" alt="vehicle image">
+                        <div class="card-body">
+                        <h5 class="card-title">Vehicle {{ c.full_name }}</h5>
+                        {% comment %} <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> {% endcomment %}
+                        </div>
+                        <ul class="list-group list-group-flush mt-1 mb-3 align-bottom">
+                        <li class="list-group-item bg-primary-subtle text-center w-100 rounded rounded-1 fw-bold">
+                            State: <kbd class="fw-light {% if c.state == 'available' %}bg-success{% else %}bg-warning{% endif %}">
+                                        {{ c.state }}
+                                    </kbd>
+                        </li>
+                        </ul>
+                        <div class="card-body">
+                            <a href="{% url 'vehicle_detail' c.pk %}" class="btn btn-info">More</a>
+                            <a href="{% url 'vehicle_update' c.pk %}" class="btn btn-primary">Update</a>
+                            <a href="{% url 'vehicle_delete' c.pk %}" class="btn btn-danger">Delete</a>
+                        </div>
+                    </div>  
+                </div>
+            {% endif%}
+        {% endfor%}
+    </div>
+
+    {% comment %} para track {% endcomment %}
+    <div class="row justify-content-start">
+        <h3>TRUCK</h3>
+        <hr/>
+        {% for c in object_list.all %}
+            {% if c.type == 'truck' %}
+                <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch">
+                    <div class="card mb-4" style="width: 100%; max-width: 350px;">
+                        <img src="{% static c.photo.url %}" style="height: 200px; object-fit: cover;" class="card-img-top" alt="vehicle image">
+                        <div class="card-body">
+                        <h5 class="card-title">Vehicle {{ c.full_name }}</h5>
+                        {% comment %} <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> {% endcomment %}
+                        </div>
+                        <ul class="list-group list-group-flush mt-1 mb-3 align-bottom">
+                        <li class="list-group-item bg-primary-subtle text-center w-100 rounded rounded-1 fw-bold">
+                            State: <kbd class="fw-light {% if c.state == 'available' %}bg-success{% else %}bg-warning{% endif %}">
+                                        {{ c.state }}
+                                    </kbd>
+                        </li>
+                        </ul>
+                        <div class="card-body">
+                            <a href="{% url 'vehicle_detail' c.pk %}" class="btn btn-info">More</a>
+                            <a href="{% url 'vehicle_update' c.pk %}" class="btn btn-primary">Update</a>
+                            <a href="{% url 'vehicle_delete' c.pk %}" class="btn btn-danger">Delete</a>
+                        </div>
+                    </div>  
+                </div>
+            {% endif%}
+        {% endfor%}
+    </div>
+
+    {% comment %} para Motorcycle {% endcomment %}
+    <div class="row justify-content-start">
+        <h3>MOTORCYCLE</h3>
+        <hr/>
+        {% for c in object_list.all %}
+            {% if c.type == 'motorcycle' %}
+                <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch">
+                    <div class="card mb-4" style="width: 100%; max-width: 350px;">
+                        <img src="{% static c.photo.url %}" style="height: 200px; object-fit: cover;" class="card-img-top" alt="vehicle image">
+                        <div class="card-body">
+                        <h5 class="card-title">Vehicle {{ c.full_name }}</h5>
+                        {% comment %} <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> {% endcomment %}
+                        </div>
+                        <ul class="list-group list-group-flush mt-1 mb-3 align-bottom">
+                        <li class="list-group-item bg-primary-subtle text-center w-100 rounded rounded-1 fw-bold">
+                            State: <kbd class="fw-light {% if c.state == 'available' %}bg-success{% else %}bg-warning{% endif %}">
+                                        {{ c.state }}
+                                    </kbd>
+                        </li>
+                        </ul>
+                        <div class="card-body">
+                            <a href="{% url 'vehicle_detail' c.pk %}" class="btn btn-info">More</a>
+                            <a href="{% url 'vehicle_update' c.pk %}" class="btn btn-primary">Update</a>
+                            <a href="{% url 'vehicle_delete' c.pk %}" class="btn btn-danger">Delete</a>
+                        </div>
+                    </div>  
+                </div>
+            {% endif%}
         {% endfor%}
     </div>
 {%endblock content%}

@@ -14,6 +14,9 @@ class User(models.Model):
     phone_number = models.CharField(max_length=10)
     photo = models.ImageField(upload_to='user_photo/')
     
+    def __str__(self):
+        return f'id: {self.numId} name: {self.first_name}'
+    
     @property
     def full_name(self):
         return f'{self.first_name} {self.last_name}'
@@ -30,7 +33,7 @@ class Vehicle(models.Model):
         ('truck', 'Truck'),
     ]
     
-    Vehicle_state_choises =[
+    vehicle_state_choises =[
         ('available','Available'),
         ('requested','Requested'),
         ('rented','Rented')
@@ -42,9 +45,12 @@ class Vehicle(models.Model):
     type = models.CharField(max_length=80, choices=vehicle_type_choises)
     year = models.IntegerField()
     plates = models.CharField(max_length=10)
-    state = models.CharField(max_length=50, choices=Vehicle_state_choises)
+    state = models.CharField(max_length=50, choices=vehicle_state_choises)
     cost_per_day = models.DecimalField(max_digits=10,decimal_places=2)
     photo = models.ImageField(upload_to='vehicle_photo/')
+    
+    def __str__(self):
+        return f'{self.type.capitalize()} {self.model} {self.brand} PLATES: {self.plates}'
 
     @property
     def full_name(self):
@@ -56,6 +62,17 @@ class Vehicle(models.Model):
 
 
 class Request(models.Model):
+    payment_status_choises =[
+        ('notPaid','Not paid'),
+        ('paid','Paid')
+    ]
+    
+    request_status_choises = [
+        ('enProcess','En process'),
+        ('rented','Rented'),
+        ('returned','Returned')
+    ]
+    
     user_id =  models.ForeignKey('User', on_delete=models.PROTECT, related_name='get_requests')
     vehicle_id = models.ForeignKey('Vehicle', on_delete=models.PROTECT, related_name= 'get_requests')
     request_date = models.DateField()
@@ -63,9 +80,9 @@ class Request(models.Model):
     expected_return_date = models.DateField()
     departure_date = models.DateField()
     entry_date = models.DateField()
-    request_status = models.CharField(max_length=80)
+    request_status = models.CharField(max_length=80, choices=request_status_choises)
     total_cost = models.DecimalField(max_digits=10,decimal_places=2)
-    payment_status = models.CharField(max_length=80)
+    payment_status = models.CharField(max_length=80, choices=payment_status_choises)
     
 
     

@@ -15,12 +15,12 @@
         <div class="card-body">
 
           {% if object.state == 'available'%}
-          <a href="#" class="btn btn-primary">Request</a>
+          <a href="{% url 'request_form_pk' object.pk %}" class="btn btn-primary">Request</a>
           {% elif object.state == 'requested'%}
-          <a href="#" class="btn btn-primary">Avalible</a>
-          <a href="#" class="btn btn-primary">Rent</a>
+          <a href="{% url 'vehicle_update_state' object.pk %}" class="btn btn-primary">Avalible</a>
+          <a href="{% url 'vehicle_update_state' object.pk %}" class="btn btn-primary">Rent</a>
           {% elif object.state == 'rented'%}
-          <a href="#" class="btn btn-primary">Avalible</a>
+          <a href="{% url 'vehicle_update_state' object.pk %}" class="btn btn-primary">Avalible</a>
           {% endif %}
         </div>
       </div>  
