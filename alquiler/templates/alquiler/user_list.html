@@ -2,9 +2,11 @@
 {% load static%}
 {%block content%}
     <div class="row justify-content-start">
+        <h3>Clients</h3>
+        <hr>
         {% for c in object_list.all %}
             <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch">
-                <div class="card mb-4" style="width: 100%; max-width: 350px;">
+                <div class="card mb-4 shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 100%; max-width: 350px;">
                     <img src="{% static c.photo.url %}" style="height: 200px; object-fit: cover;" class="card-img-top" alt="User image">
                     <div class="card-body">
                       <h5 class="card-title">User {{ c.full_name }}</h5>
